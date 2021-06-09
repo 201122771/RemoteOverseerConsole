@@ -1,0 +1,202 @@
+local guiuser = game.Players.LocalPlayer.Name
+local currentpos
+
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/201122771/Mayhem/main/venyx"))() --Reuploaded Venyx UI Lib, guy get's free credit.
+local venyx = library.new("Overseer Remote Console", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(112, 18, 18),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(53, 13, 13),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+-- welcome
+local page = venyx:addPage("Welcome!", 5012544693)
+local section1 = page:addSection("Welcome!")
+
+local guiuser = game.Players.LocalPlayer.Name
+
+section1:addButton("Logged in as, ".. guiuser, function()
+
+end)
+
+section1:addButton("All scripts made by Menace#1337", function()
+
+end)
+
+section1:addButton("Version 0.0.1", function()
+
+end)
+
+section1:addKeybind("ToggleKeybind", Enum.KeyCode.P, function()
+print("Activated Keybind")
+venyx:toggle()
+end, function()
+end)
+
+-- universal page
+local page = venyx:addPage("Main", 5012544693)
+local section1 = page:addSection("Teleport Functions")
+local section2 = page:addSection("Automation")
+local section3 = page:addSection("Features")
+local section4 = page:addSection("Modules")
+
+section1:addButton("Save Location", function()
+    currentpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end)
+
+section1:addButton("Load Location", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentpos
+end)
+
+section2:addButton("Automate Manual Rig - Red", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Red.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Orange", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Orange.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Purple", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Purple.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Blue", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Blue.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Yellow", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Yellow.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Green", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Green.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Pink", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Pink.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - White", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.White.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Brown", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Brown.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section2:addButton("Automate Manual Rig - Black", function()
+    while true do
+        wait()
+        fireclickdetector(Workspace.Tycoon.Tycoons.Black.PurchasedObjects['Oil 1'].Clicker.ClickDetector)
+    end
+end)
+
+section3:addToggle("Toggle Base Forcefield", true, function(value)
+    if(value == true)
+    then
+        fireclickdetector(Workspace.Tycoon.Tycoons.Purple.PurchasedObjects['Base Shield'].Clicker.ClickDetector)
+    end
+
+    if(value == false)
+    then
+        fireclickdetector(Workspace.Tycoon.Tycoons.Purple.PurchasedObjects['Base Shield'].Clicker.ClickDetector)
+    end
+end)
+
+section3:addButton("Collect Cash", function()
+    for i, v in pairs(game.Workspace.Tycoon.Tycoons:GetDescendants()) do
+        if v:IsA("TouchTransmitter") then
+            if v.Parent.Name == "Giver" then
+                firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+                wait()
+                firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+            end
+        end
+    end
+end)
+
+section4:addButton("Infinite Yield", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+
+
+-- Player Options Page
+local page = venyx:addPage("Player", 5012544693)
+local section1 = page:addSection("Humanoid Values")
+local section2 = page:addSection("Humanoid Options")
+
+section1:addSlider("Walkspeed", 16, 0, 50, function(value)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+section1:addSlider("JumpPower", 16, 0, 50, function(value)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+section2:addButton("Noclip [Keybind: V]", function()
+    game:getService("RunService"):BindToRenderStep("",0,function()
+        if not game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid") then return end
+        if game:getService("UserInputService"):IsKeyDown(Enum.KeyCode.V) then
+        game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid"):ChangeState(11)
+        end
+    end)
+end)
+
+-- Credits page
+local page = venyx:addPage("Credits", 5012544693)
+local section1 = page:addSection("Scripter & UI")
+
+section1:addButton("Scripts by Menace#1337", function()
+
+end)
+
+section1:addButton("UI Library used: Venyx", function()
+
+end)
+
+-- Themes
+local theme = venyx:addPage("Theme", 5012544693)
+local colors = theme:addSection("Colors")
+
+for theme, color in pairs(themes) do
+colors:addColorPicker(theme, color, function(color3)
+venyx:setTheme(theme, color3)
+end)
+end
+
+-- load
+venyx:SelectPage(venyx.pages[1], true)
